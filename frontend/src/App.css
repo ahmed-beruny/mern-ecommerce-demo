@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,3 +37,108 @@
     transform: rotate(360deg);
   }
 }
+
+/* Navbar.css */
+.navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #aaa;
+}
+
+/* Optional: Add a selected style for the active link */
+.nav-links a.active {
+  color: #fff;
+}
+
+
+/* Sidebar.css */
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  height: 100vh; /* Adjust this based on your layout */
+  padding-top: 20px;
+  
+  top: 0;
+  left: 0;
+}
+
+.sidebar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-links li {
+  margin-bottom: 10px;
+}
+
+.sidebar-links a {
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-links a:hover {
+  background-color: #555;
+}
+
+/* Optional: Add a selected style for the active link */
+.sidebar-links a.active {
+  background-color: #444;
+}
+
+
+/* dashboard.css */
+
+.dashboard {
+  margin-left: 250px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+
+
+
+.content{
+  display: flex;
+  
+}
+
+
