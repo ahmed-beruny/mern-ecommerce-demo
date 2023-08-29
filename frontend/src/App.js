@@ -1,7 +1,7 @@
 import './App.css';
-import Content from './components/Content';
-import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
+import Content from './components/Content/Content';
+import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar/Sidebar';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -9,8 +9,8 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <h1><Navbar/></h1>
-      <div className="content">
+      <Header/>
+      <div className="body-content">
         <Sidebar/>
         <Content/>
       </div>

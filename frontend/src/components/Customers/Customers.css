@@ -1,0 +1,29 @@
+.customer-table{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    font-size: 18px;
+    text-align: center;
+    background-color: #f2f2f2;
+}
+
+.customer-table th, .customer-table td {
+    padding: 15px;
+}
+
+.customer-table tr:nth-child(even){background-color: #f2f2f2;}
+
+.add-customer-button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
