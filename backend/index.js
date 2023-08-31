@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Routes Middleware
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
-// app.use('/api', categoryRoutes);
+app.use('/api', categoryRoutes);
 app.use('/api', productRoutes);
 
 // Port

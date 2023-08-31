@@ -8,6 +8,24 @@ export default function Customers() {
         //toggle hide
         addcustomerform.style.display = addcustomerform.style.display === 'none' ? '' : 'none';
     }
+
+    const [customers, setCustomers] = React.useState([]);
+
+    const getCustomers = async () => {
+        const response = await fetch('http://localhost:8000/api/users', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        console.log(data);
+        setCustomers(data);
+    };
+
+    React.useEffect(() => {
+        getCustomers();
+    }, []);
   return (
     <div className='customers'>
         <h1>Customers</h1>
@@ -25,26 +43,27 @@ export default function Customers() {
           <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Address</th>
-            <th>Phone</th>
+            <th>Email</th>
+            <th>About</th>
+            <th>Role</th>
+            <th>History</th>
             {/* ... Add more table headers if needed ... */}
           </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Beruny</td>
-                <td>1234 Main St</td>
-                <td>123-456-7890</td>
-              {/* ... Render additional table cells if needed ... */}
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>John</td>
-                <td>1234 Main St</td>
-                <td>123-456-7890</td>
-                {/* ... Render additional table cells if needed ... */}
-            </tr>
+          {
+            customers.map(customer => (
+              <tr key={customer._id}>
+                <td>{customer._id}</td>
+                <td>{customer.name}</td>
+                <td>{customer.email}</td>
+                <td>{customer.about}</td>
+                <td>{customer.role}</td>
+                <td>{customer.history}</td>
+                {/* ... Add more table data if needed ... */}
+              </tr>
+            ))
+          }
         </tbody>
       </table>
     </div>

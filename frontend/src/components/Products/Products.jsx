@@ -8,6 +8,24 @@ export default function Products() {
         addproductform.style.display = addproductform.style.display === 'none' ? '' : 'none';
     }
 
+    const [products, setProducts] = React.useState([]);
+
+    const getProducts = async () => {
+        const response = await fetch('http://localhost:8000/api/products', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        console.log(data);
+        setProducts(data);
+    };
+
+    React.useEffect(() => {
+        getProducts();
+    }, []);
+
 
 
   return (
@@ -25,25 +43,29 @@ export default function Products() {
 <table className="product-table">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Price</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Shipping</th>
+                <th>Description</th>
                 {/* ... Add more table headers if needed ... */}
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Product 1</td>
-                <td>$1.00</td>
-                {/* ... Render additional table cells if needed ... */}
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Product 2</td>
-                <td>$2.00</td>
-                {/* ... Render additional table cells if needed ... */}
-            </tr>
+            {
+                products.map(product => (
+                    <tr key={product._id}>
+                        <td>{product.name}</td>
+                        <td>{product.price}</td>
+                        <td>Empty</td>
+                        <td>{product.quantity}</td>
+                        <td>{product.shipping}</td>
+                        <td>{product.description}</td>
+                        {/* ... Add more table data if needed ... */}
+                    </tr>
+                ))
+            }
         </tbody>
         </table>
         

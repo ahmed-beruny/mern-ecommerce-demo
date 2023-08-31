@@ -3,7 +3,7 @@ const userController = require('../controllers/userController');
 const { requireSignin, requireAdmin } = require('../middlewares/authMiddleware');
 
 //get all users
-router.get('/users',requireSignin, userController.getUsers);
+router.get('/users', userController.getUsers);
 
 //get one user
 router.get('/users/:id', requireAdmin, userController.getUser);

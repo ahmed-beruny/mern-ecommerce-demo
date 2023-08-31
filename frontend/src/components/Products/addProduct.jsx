@@ -1,15 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import './Products.css';
 
 function AddProduct({ onAddProduct }) {
   const [product, setProduct] = useState({
     name: '',
     price: '',
     description: '',
-    //category: '',
+    category: '',
     quantity: '',
     shipping: '',
     // Add more fields as needed
   });
+
+  const [categories, setCategories] = useState([]);
+
+  //get categories from backend
+  const getCategories = async () => {
+    const Response = await fetch('http://localhost:8000/api/categories', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const data = await Response.json();
+    console.log(data);
+    setCategories(data);
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   //get token from cookie named jwttoken
   const getCookie = (name) => {
@@ -62,6 +82,10 @@ function AddProduct({ onAddProduct }) {
           quantity: '',
           shipping: '',
         });
+        
+        window.location.reload();
+
+
       }
       else{
         console.error('Post failed');
@@ -104,12 +128,18 @@ function AddProduct({ onAddProduct }) {
         </div>
           <div>
           <label>Category:</label>
-          <input
-            type="text"
+          <select
             name="category"
             value={product.category}
-            //onChange={handleInputChange}
-          />
+            onChange={handleInputChange}
+          >
+            {categories.map(category => (
+              <option key={category._id} value={category._id}>
+                {category.name}
+              </option>
+            ))}
+
+          </select>
           </div>
           <div>
             <label>Quantiy:</label>
@@ -123,14 +153,14 @@ function AddProduct({ onAddProduct }) {
         <div>
           <label>Shipping</label>
           <input
-            type="boolean"
+            type="text"
             name="shipping"
             value={product.shipping}
             onChange={handleInputChange}
           />
         </div>
         {/* Add more form fields as needed */}
-        <button type="submit">Add Product</button>
+        <button type="submit">Add</button>
       </form>
     </div>
 
