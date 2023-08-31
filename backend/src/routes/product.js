@@ -10,7 +10,7 @@ router.get('/products', productController.getProducts);
 router.get('/products/:id', productController.getProduct);
 
 //create one product
-router.post('/products', requireSignin, requireAdmin, productController.createProduct);
+router.post('/products', requireAdmin, productController.createProduct);
 
 //update one product
 router.put('/products/:id', requireSignin, requireAdmin, productController.updateProduct);

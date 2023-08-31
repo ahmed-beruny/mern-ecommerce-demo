@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
 
 
+const Product = require('../models/product');
 
 exports.getProducts = async (req, res) => {
     try {
@@ -26,6 +26,7 @@ exports.createProduct = async (req, res) => {
         res.status(200).json(product);
     } catch (error) {
         res.status(400).json({ error: error.message });
+        console.log(error.message)
     }
 }
 

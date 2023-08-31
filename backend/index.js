@@ -6,6 +6,10 @@ const authRoutes = require('./src/routes/auth');
 const userRoutes = require('./src/routes/user');
 const categoryRoutes = require('./src/routes/category');
 const productRoutes = require('./src/routes/product');
+const cors = require('cors');
+
+// Cors
+app.use(cors());
 
 env.config();
 
@@ -28,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
 // app.use('/api', categoryRoutes);
-// app.use('/api', productRoutes);
+app.use('/api', productRoutes);
 
 // Port
 const port = process.env.PORT || 8000;

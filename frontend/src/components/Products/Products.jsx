@@ -2,12 +2,25 @@ import React from 'react'
 import './Products.css'
 import AddProduct from './addProduct'
 export default function Products() {
+    const handlebutton = () => {
+        const addproductform = document.getElementById('add-product-from');
+        //toggle hide
+        addproductform.style.display = addproductform.style.display === 'none' ? '' : 'none';
+    }
+
+
+
   return (
     <div className='products'>
         <h1>Products</h1>
         <div>
-        <button className="add-product-button">Add Product</button>
-        <AddProduct/>
+        <button className="add-product-button" onClick={handlebutton}>Add Product</button>
+        
+        <div id='add-product-from' style={{display:'none'}}>
+            <AddProduct/>
+        </div>
+        
+        
         </div>
 <table className="product-table">
         <thead>
