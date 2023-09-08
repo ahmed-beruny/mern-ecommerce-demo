@@ -71,7 +71,6 @@ export default function Signin() {
         </div>
         <button type="submit">Login</button>
       </form>
-      <button>Don't have an account?</button>
     </div>
   );
 }

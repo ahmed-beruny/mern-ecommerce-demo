@@ -1,0 +1,35 @@
+.signup{
+    margin-top: 10%;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 5%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.signup h1{
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.signup input{
+    width: 100%;
+    padding: 2%;
+    margin-bottom: 5%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.signup button{
+    width: 100%;
+    padding: 2%;
+    margin-top: 5%;
+    border: none;
+    border-radius: 5px;
+    background-color: #1c8adb;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+}

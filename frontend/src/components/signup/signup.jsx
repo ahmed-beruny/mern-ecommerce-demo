@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react'
-
+import './signup.css'
 export default function Signup() {
 
   const [signup, setSignup] = useState({
@@ -8,6 +8,8 @@ export default function Signup() {
     password: '',
     // Add more fields as needed
   });
+
+  const { name, email, password } = signup;
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -54,25 +56,27 @@ export default function Signup() {
   return (
     <div className='signup'>
       <h2>Signup Form</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name:</label>
           <input
-            type="text" id="name" required
+            type="text" id="name" value={name} required onChange={handleInputChange}
           />
         </div>
         <div>
           <label htmlFor="email">Email:</label>
           <input
-            type="email" id="email" required
+            type="email" id="email" value={email} required onChange={handleInputChange}
           />
         </div>
         <div>
           <label htmlFor="password">Password:</label>
           <input
-            type="password" id="password" required
+            type="password" id="password" value={password} required onChange={handleInputChange}
           />
         </div>
+
+        <button type="submit">Signup</button>
         
       </form>
     </div>

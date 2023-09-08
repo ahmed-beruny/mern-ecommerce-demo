@@ -15,7 +15,7 @@ env.config();
 
 // DB Connection
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/ecommerce', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection
     .on('open', () => {
         console.log('Mongoose connection open');

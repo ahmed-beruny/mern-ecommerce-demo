@@ -3,10 +3,11 @@ import Content from './components/Content/Content';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Signin from './components/signin/signin';
+import Signup from './components/signup/signup';
 
 
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 function App() {
 
@@ -76,8 +77,26 @@ useEffect(() => {
       ) : (
         <div>
           <Signin/>
+          <Signup/>
         </div>
       )}
+
+      {/* <Routes>
+        <Route exact path="/" element={
+          
+        <div>
+        <div className="App">
+          <Header userName={loginInfo.user.name} />
+          <div className="body-content">
+            <Sidebar/>
+            <Content/>
+          </div>
+        </div>
+      </div>
+        } />
+        <Route path="/signin" element={<Signin/>} />
+        <Route path="/signup" element={<Signup/>} />
+      </Routes> */}
 
 
     </Router>
