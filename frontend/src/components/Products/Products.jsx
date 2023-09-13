@@ -26,6 +26,25 @@ export default function Products() {
         getProducts();
     }, []);
 
+    
+
+
+    const deleteItem = (id) => {
+        const deleteProduct = async () => {
+            const response = await fetch(`http://localhost:8000/api/products/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await response.json();
+            console.log(data);
+            getProducts();
+        };
+        return deleteProduct;
+    };
+
+
 
 
   return (
@@ -49,6 +68,8 @@ export default function Products() {
                 <th>Quantity</th>
                 <th>Shipping</th>
                 <th>Description</th>
+                <th>Image</th>
+                
                 {/* ... Add more table headers if needed ... */}
             </tr>
         </thead>
@@ -62,6 +83,10 @@ export default function Products() {
                         <td>{product.quantity}</td>
                         <td>{product.shipping}</td>
                         <td>{product.description}</td>
+                        <td><img src={product.image} alt=""/></td>
+                        <td><button onClick={
+                            deleteItem(product._id)
+                        }>Delete</button></td>
                         {/* ... Add more table data if needed ... */}
                     </tr>
                 ))

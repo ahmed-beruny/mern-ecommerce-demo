@@ -25,8 +25,8 @@ mongoose.connection
     });
 
 // Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 
 // Routes Middleware
 app.use('/api', authRoutes);

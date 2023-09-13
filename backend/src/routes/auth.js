@@ -7,10 +7,7 @@ router.post('/signup', signup);
 router.post('/signin', signin);
 router.get('/signout', signout);
 router.get('/issignedin',requireAdmin, (req, res) => {
-    res.status(200).json({
-        user: req.user,
-        loggedIn: true
-    });
+    res.status(200).json(req.user);
 })
 
 

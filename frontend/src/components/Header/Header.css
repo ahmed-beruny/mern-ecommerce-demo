@@ -17,3 +17,13 @@
     padding: 10px;
     border-radius: 5px;
 }
+
+.right-navs{
+    display: flex;
+    align-items: center;
+
+}
+
+.nav-items{
+    margin-right: 10px;
+}

@@ -1,98 +1,81 @@
-.product-table{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #ddd;
-    font-size: 18px;
-    text-align: center;
-    background-color: #f2f2f2;
+.products{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+    max-width: 1200px;
+    align-items: center;
 }
-
-.product-table th, .product-table td {
-    padding: 15px;
-}
-
-.product-table tr:nth-child(even){background-color: #f2f2f2;}
 
 .add-product-button{
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 4px 2px;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #ddd;
     cursor: pointer;
-    border-radius: 5px;
 }
 
-.add-product{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 100%;
+.products table{
     border-collapse: collapse;
+    width: 100%;
+    ;
+}
+
+.products table th{
     border: 1px solid #ddd;
-    font-size: 18px;
-    text-align: center;
+    padding: 8px;
+}
+
+.products table td{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.products table tr:nth-child(even){
     background-color: #f2f2f2;
+}
+
+.products table tr:hover{
+    background-color: #ddd;
+}
+
+.products img{
+    width: 100px;
+    height: 100px;
+}
+
+
+
+.add-product{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 .add-product form{
-    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
-.add-product input[type=text], .add-product input[type=number]{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+.add-product form input{
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
 }
 
-.add-product input[type=submit]{
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 4px 2px;
+.add-product form button{
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #ddd;
     cursor: pointer;
-    border-radius: 5px;
 }
 
-.add-product input[type=submit]:hover{
-    background-color: #45a049;
+.add-product form button:hover{
+    background-color: #ccc;
 }
-
-.add-product select{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.add-product label{
-    font-weight: bold;
-}
-
-.add-product button{
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin-left: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
 

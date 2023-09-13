@@ -16,6 +16,6 @@ router.post('/products', requireAdmin, productController.createProduct);
 router.put('/products/:id', requireSignin, requireAdmin, productController.updateProduct);
 
 //delete one product
-router.delete('/products/:id', requireSignin, requireAdmin, productController.deleteProduct);
+router.delete('/products/:id', productController.deleteProduct);
 
 module.exports = router;

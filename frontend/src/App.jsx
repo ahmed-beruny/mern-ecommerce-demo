@@ -5,10 +5,16 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Signin from './components/signin/signin';
 import Signup from './components/signup/signup';
 
+import Customers from './components/Customers/Customers'; 
+import Products from './components/Products/Products';
+import Orders from './components/Orders/Orders';
+import Settings from './components/Settings/Settings';
+
 
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import ProtectedRoute from './ProtectedRoute';
 function App() {
 
   const [loginInfo, setLoginInfo] = useState(
@@ -17,6 +23,11 @@ function App() {
       user: {}
     }
   );
+
+
+  //get api url from .env file
+
+
 
 
 
@@ -37,17 +48,17 @@ async function getCookie(name) {
     });
 
     if(response.ok){
-      console.log('signed in');
+      //console.log('signed in');
       
       const data = await response.json();
       //setuser(data.user);
       
       setLoginInfo({
         isloggedin: true,
-        user: data.user
+        user: data
       });
 
-      console.log(data)
+      //console.log(data)
 
 
       return data;
@@ -64,39 +75,24 @@ useEffect(() => {
 
   return (
     <Router>
-      {loginInfo.isloggedin ? ( 
-        <div>
-          <div className="App">
-            <Header userName={loginInfo.user.name} />
-            <div className="body-content">
-              <Sidebar/>
-              <Content/>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div>
-          <Signin/>
-          <Signup/>
-        </div>
-      )}
-
-      {/* <Routes>
-        <Route exact path="/" element={
-          
-        <div>
-        <div className="App">
-          <Header userName={loginInfo.user.name} />
-          <div className="body-content">
-            <Sidebar/>
-            <Content/>
-          </div>
-        </div>
+      <div className="app">
+        <Header loginInfo={loginInfo} setLoginInfo={setLoginInfo} />
+        <div className="app__body">
+          <Routes>
+            <Route path="/" element={<ProtectedRoute Component = {Content}/>} >
+              <Route path="customers" element={<Customers/>} />
+              <Route path="products" element={<Products/>} />
+              <Route path="orders" element={<Orders/>} />
+              <Route path="settings" element={<Settings/>} />
+       
+            </Route>
+            <Route path="/signin" element={<Signin loginInfo={loginInfo} setLoginInfo={setLoginInfo} />} />
+            <Route path="/signup" element={<Signup loginInfo={loginInfo} setLoginInfo={setLoginInfo} />} />
+          </Routes>
+    
       </div>
-        } />
-        <Route path="/signin" element={<Signin/>} />
-        <Route path="/signup" element={<Signup/>} />
-      </Routes> */}
+
+      </div>
 
 
     </Router>
@@ -106,32 +102,3 @@ useEffect(() => {
 export default App;
 
 
-export const issignedin = async() => {
-  try{
-    //get token from cookie name jwttoken
-
-    const token = document.cookie.split('=')[4];
-    if(token){
-      //setisloggedin(true);
-      console.log(token);
-
-      const response = await fetch('http://localhost:8000/api/issignedin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({token})
-      });
-
-      if(response.ok){
-        console.log('signed in');
-        return true;
-      }
-      else return false;
-
-    }
-  }catch(err){
-
-    console.log(err);
-  }
-}

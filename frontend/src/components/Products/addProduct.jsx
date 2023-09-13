@@ -7,6 +7,7 @@ function AddProduct({ onAddProduct }) {
     price: '',
     description: '',
     category: '',
+    image: '',
     quantity: '',
     shipping: '',
     // Add more fields as needed
@@ -59,6 +60,22 @@ function AddProduct({ onAddProduct }) {
     }));
   };
 
+  const covertBase64 = async (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setProduct(prevProduct => ({
+        ...prevProduct,
+        image: reader.result,
+      }));
+    };
+    reader.onerror = (error) => {
+      console.log('Error: ', error);
+    }
+  };
+
+
   const handleSubmit = async event => {
     event.preventDefault();
     console.log(product);
@@ -98,13 +115,15 @@ function AddProduct({ onAddProduct }) {
   return (
     <div className="add-product">
       <h2>Add Product</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <div>
           <label>Name:</label>
           <input
+
             type="text"
             name="name"
             value={product.name}
+            required
             onChange={handleInputChange}
           />
         </div>
@@ -123,13 +142,29 @@ function AddProduct({ onAddProduct }) {
             type="number"
             name="price"
             value={product.price}
+            required
             onChange={handleInputChange}
           />
+        </div>
+
+        <div>
+          <label>Image:</label>
+          <input
+            type="file"
+            name="image"
+            onChange={covertBase64}
+          />
+          {
+            product.image && (
+              <img src={product.image} alt="product" style={{ width: '100px' }} />
+            )
+          }
         </div>
           <div>
           <label>Category:</label>
           <select
             name="category"
+            required
             value={product.category}
             onChange={handleInputChange}
           >
@@ -145,6 +180,7 @@ function AddProduct({ onAddProduct }) {
             <label>Quantiy:</label>
             <input
               type="number"
+              required
               name="quantity"
               value={product.quantity}
               onChange={handleInputChange}
@@ -155,6 +191,7 @@ function AddProduct({ onAddProduct }) {
           <input
             type="text"
             name="shipping"
+            required
             value={product.shipping}
             onChange={handleInputChange}
           />

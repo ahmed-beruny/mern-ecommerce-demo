@@ -1,4 +1,13 @@
 .content{
     width: 70%;
-    ;
+    display: flex;
+
+}
+
+.side-bar{
+    width: 30%;
+}
+
+.con-tent{
+    width: 70%;
 }

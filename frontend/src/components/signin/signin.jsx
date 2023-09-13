@@ -1,12 +1,15 @@
 import React from 'react'
 import './signin.css'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 
-export default function Signin() {
+export default function Signin(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +38,7 @@ export default function Signin() {
         const jwttoken = await response.json();
         console.log(jwttoken.token);
         document.cookie = `jwttoken=${jwttoken.token}`;
-        window.location.reload();
+        window.location.href = '/';
       } else {
         // Handle error, e.g. show an error message
         console.error('Post failed');
@@ -71,6 +74,9 @@ export default function Signin() {
         </div>
         <button type="submit">Login</button>
       </form>
+      <div>
+        <Link to='/signup'>Don't have an account?</Link>
+      </div>
     </div>
   );
 }
